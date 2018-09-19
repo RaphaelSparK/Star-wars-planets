@@ -1,0 +1,45 @@
+
+.planet {
+  transform: rotateX(25deg) translateZ(0);
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 25pt;
+  align-self: center;
+  justify-content: center;
+  z-index: 3;
+  color: rgb(255, 230, 0);
+  text-align: center
+}
+
+.planet h1 {
+  font-size: 40pt;
+  font-weight:bold;
+  text-transform: uppercase;
+  padding-bottom: 40px;
+  
+}
+
+.btnNext {
+
+  display:inline-block;
+  padding:0.5em 2em;
+  border:0.16em solid rgb(255, 230, 0);
+  margin:20px 0.3em 0.3em 0;
+  box-sizing: border-box;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-weight:400;
+  font-size: 15pt;
+  color: rgb(255, 230, 0);
+  text-align:center;
+  transition: all 0.15s;
+  border-radius: 10px
+}
+
+.btnNext:hover{
+  color:rgb(255, 200, 0);
+  border-color:rgb(255, 200, 0);
+  }
+.btnNext:active{
+  color:#FFF;
+  border-color:#FFF;
+  }
