@@ -1,52 +1,42 @@
 import React, { Component } from 'react'
 import './App.css'
-import { getAll, getPlanet } from './api/service'
+
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchGetPlanets, fetchGetPlanet } from './actions'
+
 import Planet from './components/Planet'
 
+import { getRandomInt } from './helpers/util'
+
 class App extends Component {
-  state = {
-    planets: [],
-    planet: null,
-    planetsCount: 0
-  
-  }
-  
-  componentDidMount() {
-   this.loadPlanets()
+  componentDidMount () {
+    this.props.fetchGetPlanets().then(() => {
+      this.getPlanet()
+    })
   }
 
- getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-  
-  loadPlanets = () =>{
-    getAll()
-    .then((planets) => {
-      this.setState({
-        planets,
-        planetsCount: planets.count
-      })
-      this.showPlanet()
-  })}
-
-  showPlanet = () => {
-    getPlanet(this.getRandomInt(1, this.state.planetsCount))
-    .then((planet) => {
-      this.setState({
-        planet
-      })
-  })
+  getPlanet () {
+    this.props.fetchGetPlanet(getRandomInt(1, this.props.planets.count))
   }
 
   render () {
     return (
-      <div className="flexbox-container">
-        {this.state.planet && <Planet planet={this.state.planet} onNextPlanet={this.showPlanet}></Planet> }
-        <div className='stars'></div>
-        <div className='twinkling'></div>
+      <div className='flexbox-container'>
+        {this.props.planet.length !== 0 && <Planet planet={this.props.planet} onNextPlanet={() => this.getPlanet()} /> }
+        <div className='stars' />
+        <div className='twinkling' />
       </div>
     )
   }
 }
 
-export default App
+const mapStateToProps = store => ({
+  planets: store.planets.planets,
+  planet: store.planets.planet
+})
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ fetchGetPlanets, fetchGetPlanet }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -4,7 +4,7 @@ import './Planet.css'
 
 const Planet = (props) => {
   return (
-    <div className='planet'>
+    <div className='planet slide-up'>
       <h1>{props.planet.name}</h1>
       <p>Population: {props.planet.population}</p>
       <p>Climate: {props.planet.climate}</p>

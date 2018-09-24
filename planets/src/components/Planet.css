@@ -15,7 +15,6 @@
   font-weight:bold;
   text-transform: uppercase;
   padding-bottom: 40px;
-  
 }
 
 .btnNext {
@@ -39,6 +38,7 @@
   color:rgb(255, 200, 0);
   border-color:rgb(255, 200, 0);
   }
+
 .btnNext:active{
   color:#FFF;
   border-color:#FFF;
