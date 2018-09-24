@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
+import styled from 'styled-components';
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -9,6 +10,40 @@ import Planet from './components/Planet'
 import Loader from './components/Loader'
 
 import { getRandomInt } from './helpers/util'
+
+const Container = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const Stars = styled.div`
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: #000 url("https://image.ibb.co/mjnygo/stars.png") repeat top center;
+`;
+
+const Twinkling = styled.div`
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: transparent url("https://image.ibb.co/ir1DE8/twinkling.png") repeat top center;
+  animation: move-twink-back 200s linear infinite;
+`;
 
 
 class App extends Component {
@@ -33,11 +68,11 @@ state = {
 
   render () {
     return (
-      <div className='flexbox-container'>
-      {this.state.loading ? <Loader /> : this.showPlanetInfo()  }
-        <div className='stars' />
-        <div className='twinkling' />
-      </div>
+      <Container>
+        {this.state.loading ? <Loader /> : this.showPlanetInfo()  }
+        <Stars />
+        <Twinkling />
+      </Container>
     )
   }
 }
