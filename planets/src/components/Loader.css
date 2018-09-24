@@ -1,0 +1,21 @@
+.loader {  
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 25pt;
+  position: relative;
+  top: -30px;
+  align-self: center;
+  justify-content: center;
+  z-index: 3;
+  color: rgb(255, 230, 0);
+  text-align: center;
+}
+
+.logoLoader {
+animation: App-logo-spin infinite 3s linear;
+height: 80px;
+}
+
+@keyframes App-logo-spin {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}

@@ -1,37 +1,61 @@
 
 .planet {
-  transform: rotateX(25deg) translateZ(0);
   font-family: 'Pathway Gothic One', sans-serif;
   font-size: 25pt;
-  align-self: center;
+  position: relative;
+  top: -30px;
+  align-self: auto;
   justify-content: center;
   z-index: 3;
   color: rgb(255, 230, 0);
-  text-align: center
+  text-align: center;
+  perspective: 200px;
+}
+
+.planetInfo {
+  transform: rotateX(25deg) translateZ(0);
+ 
+  
 }
 
 .planet h1 {
-  font-size: 40pt;
+  font-size: 60pt;
   font-weight:bold;
   text-transform: uppercase;
   padding-bottom: 40px;
 }
 
-.btnNext {
+.planet p {
+  line-height: 60px;
+  width: 300px;
+  max-width: 300px;
+}
 
+.planet span {
+  color: rgb(255, 249, 196);
+}
+
+.feat {
+  line-height: 30px;
+  font-size: 25pt
+}
+
+.btnNext {
+  align-self: baseline;
   display:inline-block;
   padding:0.5em 2em;
   border:0.16em solid rgb(255, 230, 0);
-  margin:20px 0.3em 0.3em 0;
+  margin:100px 0.3em 0.3em 0;
   box-sizing: border-box;
   text-decoration:none;
   text-transform:uppercase;
   font-weight:400;
   font-size: 15pt;
-  color: rgb(255, 230, 0);
   text-align:center;
   transition: all 0.15s;
-  border-radius: 10px
+  border-radius: 10px;
+  position: relative;
+  z-index: 4;
 }
 
 .btnNext:hover{

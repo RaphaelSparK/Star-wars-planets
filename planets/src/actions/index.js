@@ -32,9 +32,9 @@ export function getPlanet (planet) {
 }
 
 export function fetchGetPlanet (id) {
-  return (dispatch) => {
-    API.getPlanet(id).then(
-      (response) => dispatch(getPlanet(response))
+  return function (dispatch) {
+    return API.getPlanet(id).then(
+      planet => dispatch(getPlanet(planet))
     )
   }
 }

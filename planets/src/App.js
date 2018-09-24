@@ -6,10 +6,16 @@ import { bindActionCreators } from 'redux'
 import { fetchGetPlanets, fetchGetPlanet } from './actions'
 
 import Planet from './components/Planet'
+import Loader from './components/Loader'
 
 import { getRandomInt } from './helpers/util'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 class App extends Component {
+state = {
+  loading: true,
+}
+
   componentDidMount () {
     this.props.fetchGetPlanets().then(() => {
       this.getPlanet()
@@ -17,13 +23,26 @@ class App extends Component {
   }
 
   getPlanet () {
-    this.props.fetchGetPlanet(getRandomInt(1, this.props.planets.count))
+    this.setState({loading: true})
+    this.props.fetchGetPlanet(getRandomInt(1, this.props.planets.count)).then(() => {this.setState({loading: false})})
   }
+
+  showPlanetInfo () {
+    return this.props.planet.length !== 0 && (
+      <CSSTransitionGroup 
+      transitionName="example"
+      transitionEnterTimeout={500}
+      transitionLeaveTimeout={300}>
+        <Planet planet={this.props.planet} onNextPlanet={() => this.getPlanet()} />
+      </CSSTransitionGroup>
+    )
+  }
+
 
   render () {
     return (
       <div className='flexbox-container'>
-        {this.props.planet.length !== 0 && <Planet planet={this.props.planet} onNextPlanet={() => this.getPlanet()} /> }
+      {this.state.loading ? <Loader /> : this.showPlanetInfo()  }
         <div className='stars' />
         <div className='twinkling' />
       </div>
