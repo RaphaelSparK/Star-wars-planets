@@ -14,8 +14,6 @@
 
 .planetInfo {
   transform: rotateX(25deg) translateZ(0);
- 
-  
 }
 
 .planet h1 {

@@ -9,13 +9,6 @@ export function getPlanets (planets) {
   }
 }
 
-export function error (error) {
-  return {
-    type: 'ERROR',
-    error
-  }
-}
-
 export function fetchGetPlanets () {
   return function (dispatch) {
     return API.getAll().then(

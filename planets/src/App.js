@@ -9,7 +9,7 @@ import Planet from './components/Planet'
 import Loader from './components/Loader'
 
 import { getRandomInt } from './helpers/util'
-import { CSSTransitionGroup } from 'react-transition-group'
+
 
 class App extends Component {
 state = {
@@ -28,16 +28,8 @@ state = {
   }
 
   showPlanetInfo () {
-    return this.props.planet.length !== 0 && (
-      <CSSTransitionGroup 
-      transitionName="example"
-      transitionEnterTimeout={500}
-      transitionLeaveTimeout={300}>
-        <Planet planet={this.props.planet} onNextPlanet={() => this.getPlanet()} />
-      </CSSTransitionGroup>
-    )
+    return this.props.planet.length !== 0 && <Planet planet={this.props.planet} onNextPlanet={() => this.getPlanet()} />
   }
-
 
   render () {
     return (
