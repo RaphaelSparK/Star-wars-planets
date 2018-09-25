@@ -13,6 +13,7 @@ import { getRandomInt } from './helpers/util'
 
 const Container = styled.div`
   position: absolute;
+  overflow-x: hidden;
   top: 0;
   bottom: 0;
   left: 0;
