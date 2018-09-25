@@ -46,13 +46,13 @@ const Twinkling = styled.div`
   animation: move-twink-back 200s linear infinite;
 `;
 
-
 class App extends Component {
 state = {
   loading: true,
 }
 
   componentDidMount () {
+    document.title = "Star Wars Planet Quiz"
     this.props.fetchGetPlanets().then(() => {
       this.getPlanet()
     })
